@@ -1,13 +1,11 @@
-// Our router module
 const router = require('express').Router();
 
-// Our controller
+// Our controllers
 const PagesController = require('../controllers/pagesController');
 
-// Our routes
+// Create our routes
 router.get(`/`, PagesController.show);
 router.get(`/about`, PagesController.show);
 router.get(`/contact`, PagesController.show);
 
-// We have to export our changes
 module.exports = router;
