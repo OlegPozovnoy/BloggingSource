@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // Our Schema
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 const BlogSchema = new mongoose.Schema({
@@ -23,7 +26,10 @@ const BlogSchema = new mongoose.Schema({
 });
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 // Query Helper
 BlogSchema.query.drafts = function () {
   return this.where({
@@ -37,5 +43,8 @@ BlogSchema.query.published = function () {
   });
 };
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 module.exports = mongoose.model('Blog', BlogSchema);

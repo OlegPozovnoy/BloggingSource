@@ -2,7 +2,11 @@ const express = require('express');
 const app = express();
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // Import our Page Routes
+=======
+// Importing the routes
+>>>>>>> Stashed changes
 =======
 // Importing the routes
 >>>>>>> Stashed changes

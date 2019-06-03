@@ -1,6 +1,7 @@
 const Blog = require('../models/blog');
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 exports.index = (req, res) => {};
 
 exports.show = (req, res) => {};
@@ -13,6 +14,8 @@ exports.new = (req, res) => {};
 
 exports.create = (req, res) => {};
 =======
+=======
+>>>>>>> Stashed changes
 exports.new = (req, res) => {
   res.render('blogs/new', {
     title: 'New Blog Post'
@@ -53,5 +56,9 @@ exports.drafts = (req, res) => {
 
 exports.published = (req, res) => {
 
+<<<<<<< Updated upstream
+};
+>>>>>>> Stashed changes
+=======
 };
 >>>>>>> Stashed changes

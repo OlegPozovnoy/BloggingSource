@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // Mongoose
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DB_URI, {
@@ -15,6 +16,8 @@ mongoose.connect(process.env.DB_URI, {
 const express = require('express');
 const path = require('path');
 =======
+=======
+>>>>>>> Stashed changes
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DB_URI, {
   auth: {
@@ -23,13 +26,20 @@ mongoose.connect(process.env.DB_URI, {
   },
   useNewUrlParser: true
 }).catch(err => console.log(`ERROR: ${err}`));
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 const express = require('express');
 const app = express();
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 // Body Parser
+=======
+// Body parser which will make reading request bodies MUCH easier
+>>>>>>> Stashed changes
 =======
 // Body parser which will make reading request bodies MUCH easier
 >>>>>>> Stashed changes
@@ -38,6 +48,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 // End Parser
 
@@ -52,6 +63,8 @@ app.use('/images', express.static('assets/images'));
 const routes = require('./routes.js');
 app.use('/', routes);
 =======
+=======
+>>>>>>> Stashed changes
 
 const routes = require('./routes.js');
 app.use('/', routes);
@@ -62,6 +75,9 @@ app.set('view engine', 'pug');
 app.use('/css', express.static('assets/stylesheets'));
 app.use('/js', express.static('assets/javascripts'));
 app.use('/images', express.static('assets/images'));
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 const port = (process.env.PORT || 4000);
