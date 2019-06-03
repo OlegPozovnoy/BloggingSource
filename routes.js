@@ -1,7 +1,11 @@
 const express = require('express');
 const app = express();
 
+<<<<<<< Updated upstream
 // Import our Page Routes
+=======
+// Importing the routes
+>>>>>>> Stashed changes
 const pageRoutes = require('./routes/pages');
 
 // Register our Page Routes with our app
