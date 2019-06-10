@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+
+// Our Schema
 const BlogSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -17,7 +19,7 @@ const BlogSchema = new mongoose.Schema({
   timestamps: true
 });
 
-// Query helper
+// Query Helper
 BlogSchema.query.drafts = function () {
   return this.where({
     status: 'DRAFT'
