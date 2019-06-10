@@ -80,9 +80,3 @@ exports.destroy = (req, res) => {
       console.error(`ERROR: ${err}`);
     });
 };
-
-
-// To fil in later
-exports.drafts = (req, res) => {};
-
-exports.published = (req, res) => {};

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const router = require('express').Router();
 
 const BlogsController = require('../controllers/blogsController');
@@ -14,4 +15,21 @@ router.post('/destroy', BlogsController.destroy);
 
 // End routes
 
+=======
+// Our router module
+const router = require('express').Router();
+
+// Our controller
+const BlogsController = require('../controllers/blogsController');
+
+// Our routes
+router.get(`/new`, BlogsController.new);
+router.get(`/drafts`, BlogsController.drafts);
+router.get(`/published`, BlogsController.published);
+router.get(`/`, BlogsController.index);
+router.get(`/:id`, BlogsController.show);
+router.post(`/`, BlogsController.create);
+
+// We have to export our changes
+>>>>>>> bc00363250768e2810ab2502f7e07b336e20fed5
 module.exports = router;
