@@ -14,6 +14,11 @@ const BlogSchema = new mongoose.Schema({
     type: String,
     enum: ['DRAFT', 'PUBLISHED'],
     default: 'DRAFT'
+  },
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Author',
+    required: true
   }
 }, {
   timestamps: true
