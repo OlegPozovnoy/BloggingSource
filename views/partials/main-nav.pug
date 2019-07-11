@@ -17,14 +17,14 @@ nav.navbar.fixed-top.navbar-expand-lg.navbar-light.bg-light
             a.dropdown-item(href='/blogs/new') New Blog
             a.dropdown-item(href='/blogs/published') Published
             a.dropdown-item(href='/blogs/drafts') Drafts
-        li.nav-item
-          form.nav-destroy(action=`/logout`, method="POST")
-            input.destroy(type="submit", value="Logout")
       if !isAuthenticated
         li.nav-item
           a.nav-link(href='/authors/new') Register
         li.nav-item
           a.nav-link(href='/login') Login
-        
+      if isAuthenticated
+        li.nav-item
+          form.nav-destroy(action=`/logout`, method="POST")
+            input.destroy(type="submit", value="Logout")
       li.nav-item
         a.nav-link(href='/contact') Contact

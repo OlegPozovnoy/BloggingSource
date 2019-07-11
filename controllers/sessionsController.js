@@ -6,6 +6,7 @@ exports.login = (req, res) => {
   });
 };
 
+
 exports.authenticate = (req, res) => {
   Author.findOne({
       email: req.body.email
@@ -16,6 +17,7 @@ exports.authenticate = (req, res) => {
 
         if (isMatch) {
           req.session.userId = author.id;
+
           req.flash('success', 'You are logged in.');
           res.redirect('/blogs');
         } else {
@@ -30,7 +32,10 @@ exports.authenticate = (req, res) => {
     });
 };
 
+
 exports.logout = (req, res) => {
+  req.isAuthenticated();
+
   req.session.userId = null;
   req.flash('success', 'You are logged out');
   res.redirect('/');

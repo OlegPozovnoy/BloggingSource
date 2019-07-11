@@ -1,6 +1,7 @@
-const mongoose = require('mongoose');
+// We will need our mongoose library
+const mongoose = require(`mongoose`);
 
-// Our Schema
+// Our schema
 const BlogSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -37,4 +38,5 @@ BlogSchema.query.published = function () {
   });
 };
 
+// Exporting our blog model
 module.exports = mongoose.model('Blog', BlogSchema);

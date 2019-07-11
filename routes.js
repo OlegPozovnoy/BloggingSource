@@ -1,17 +1,18 @@
+// Our Express app module
 const express = require('express');
 const app = express();
 
-// Import our Page Routes
+// Importing the pageRoutes
 const pageRoutes = require('./routes/pages');
-const blogsRoutes = require('./routes/blogs');
-const authorsRoutes = require('./routes/authors');
-const sessionsRoutes = require('./routes/sessions');
+const blogRoutes = require('./routes/blogs');
+const authorRoutes = require('./routes/authors');
+const sessionRoutes = require('./routes/sessions');
 
-// Register our Page Routes with our app
+// Registering our pageRoutes
 app.use('/', pageRoutes);
-app.use('/blogs', blogsRoutes);
-app.use('/authors', authorsRoutes);
-app.use('/', sessionsRoutes);
+app.use('/blogs', blogRoutes);
+app.use('/authors', authorRoutes);
+app.use('/', sessionRoutes);
 
-// Export our changes
+// Exporting the changes
 module.exports = app;

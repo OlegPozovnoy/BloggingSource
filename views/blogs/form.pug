@@ -1,5 +1,4 @@
-
-form(action=(blog ? "/blogs/update" : "/blogs"), method="POST")
+form(action=(blog ? `/blogs/update` : "/blogs"), method="POST")
   if blog
     input(type="hidden", name="id", value=blog.id)
 
@@ -10,14 +9,13 @@ form(action=(blog ? "/blogs/update" : "/blogs"), method="POST")
   .form-group
     label Content
     textarea.form-control(name="blog[content]")
-      = blog ? blog.content : null
+      = blog ? blog.title : null
 
   .form-group
     label Status
     select.form-control(name="blog[status]", required)
       each status in ['DRAFT', 'PUBLISHED']
-        option(value=status, selected=(blog && blog.status === status))
-          = status.toLowerCase()
+        option(value=status, selected=(blog && blog.status === status ? true : false))= status.toLowerCase()
   
   .form-group
     button.btn.btn-dark(type="submit") Submit

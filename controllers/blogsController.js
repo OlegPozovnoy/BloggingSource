@@ -1,4 +1,5 @@
 const Blog = require('../models/blog');
+const mongoose = require('mongoose');
 
 exports.index = (req, res) => {
   req.isAuthenticated();
@@ -15,47 +16,10 @@ exports.index = (req, res) => {
     })
     .catch(err => {
       req.flash('error', `ERROR: ${err}`);
-      res.redirect('/');
+      res.redirect('/blogs/new');
     });
 };
 
-exports.drafts = (req, res) => {
-  req.isAuthenticated();
-
-  Blog.find({
-      author: req.session.userId
-    }).drafts()
-    .populate('author')
-    .then(blogs => {
-      res.render('blogs/index', {
-        blogs: blogs,
-        title: 'Drafts'
-      });
-    })
-    .catch(err => {
-      req.flash('error', `ERROR: ${err}`);
-      res.redirect('/');
-    });
-};
-
-exports.published = (req, res) => {
-  req.isAuthenticated();
-
-  Blog.find({
-      author: req.session.userId
-    }).published()
-    .populate('author')
-    .then(blogs => {
-      res.render('blogs/index', {
-        blogs: blogs,
-        title: 'Published'
-      });
-    })
-    .catch(err => {
-      req.flash('error', `ERROR: ${err}`);
-      res.redirect('/');
-    });
-};
 
 exports.show = (req, res) => {
   req.isAuthenticated();
@@ -72,41 +36,64 @@ exports.show = (req, res) => {
     })
     .catch(err => {
       req.flash('error', `ERROR: ${err}`);
-      res.redirect('/');
+      res.redirect('/blogs/new');
     });
 };
+
+
+exports.drafts = (req, res) => {
+  req.isAuthenticated();
+
+  Blog.find({
+      author: req.session.userId
+    }).drafts()
+    .then(drafts => {
+      res.render('blogs/index', {
+        blogs: drafts,
+        title: 'Drafts'
+      });
+    })
+    .catch(err => {
+      req.flash('error', `ERROR: ${err}`);
+      res.redirect('/blogs/new');
+    });
+};
+
+
+exports.published = (req, res) => {
+  req.isAuthenticated();
+
+  Blog.find({
+      author: req.session.userId
+    }).published()
+    .then(published => {
+      res.render('blogs/index', {
+        blogs: published,
+        title: 'Published'
+      });
+    })
+    .catch(err => {
+      req.flash('error', `ERROR: ${err}`);
+      res.redirect('/blogs/new');
+    });
+};
+
 
 exports.new = (req, res) => {
   req.isAuthenticated();
 
   res.render('blogs/new', {
-    title: 'New Blog Post'
+    title: `New Blog Post`
   });
 };
 
-exports.edit = (req, res) => {
+
+exports.create = async (req, res) => {
   req.isAuthenticated();
 
-  Blog.findOne({
-      _id: req.params.id,
-      author: req.session.userId
-    })
-    .then(blog => {
-      res.render('blogs/edit', {
-        blog: blog,
-        title: blog.title
-      });
-    })
-    .catch(err => {
-      req.flash('error', `ERROR: ${err}`);
-      res.redirect('/');
-    });
-};
-
-exports.create = (req, res) => {
-  req.isAuthenticated();
-
+  // Add the current author to the blog
   req.body.blog.author = req.session.userId;
+
   Blog.create(req.body.blog)
     .then(() => {
       req.flash('success', 'New blog was created successfully.');
@@ -117,6 +104,26 @@ exports.create = (req, res) => {
       res.redirect('/blogs/new');
     });
 };
+
+
+exports.edit = (req, res) => {
+  req.isAuthenticated();
+
+  Blog.findOne({
+      _id: req.params.id,
+      author: req.session.userId
+    })
+    .then(blog => {
+      res.render('blogs/edit', {
+        title: `Edit ${blog.title}`,
+        blog: blog
+      })
+    })
+    .catch(err => {
+      console.error(`ERROR: ${err}`);
+    });
+};
+
 
 exports.update = (req, res) => {
   req.isAuthenticated();
@@ -129,13 +136,14 @@ exports.update = (req, res) => {
     })
     .then(() => {
       req.flash('success', 'The blog was updated successfully.');
-      res.redirect(`/blogs/${req.body.id}`);
+      res.redirect('/blogs');
     })
     .catch(err => {
       req.flash('error', `ERROR: ${err}`);
       res.redirect(`/blogs/${req.body.id}/edit`);
     });
 };
+
 
 exports.destroy = (req, res) => {
   req.isAuthenticated();
